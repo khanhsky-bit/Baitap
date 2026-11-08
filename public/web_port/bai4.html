@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<script>
+(function() {
+  try {
+    var _origFetch = window.fetch;
+    Object.defineProperty(window, "fetch", {
+      get: function() { return _origFetch; },
+      set: function(fn) { _origFetch = fn; },
+      configurable: true,
+      enumerable: true
+    });
+    if (typeof Window !== "undefined" && Window.prototype) {
+      try {
+        Object.defineProperty(Window.prototype, "fetch", {
+          get: function() { return _origFetch; },
+          set: function(fn) { _origFetch = fn; },
+          configurable: true,
+          enumerable: true
+        });
+      } catch (_) {}
+    }
+  } catch (_) {}
+  window.addEventListener("error", function(e) {
+    if (e && e.message && e.message.indexOf("Cannot set property fetch of #<Window>") !== -1) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return true;
+    }
+  }, true);
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm | Portfolio Nguyễn Hưng Nam</title>
+<meta name="description" content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Portfolio <span>Nguyễn Hưng Nam</span></a>
+    <button class="burger" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav><ul class="menu"><li><a href="index.html">Giới thiệu</a></li><li class="has-sub"><a href="projects.html" class="active">Dự án ▾</a><ul class="sub"><li><a href="bai1.html">Bài 1: Thao tác cơ bản với tệp tin và thư mục</a></li><li><a href="bai2.html">Bài 2: Tìm kiếm và đánh giá thông tin học thuật</a></li><li><a href="bai3.html">Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</a></li><li><a href="bai4.html">Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</a></li><li><a href="bai5.html">Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</a></li><li><a href="bai6.html">Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</a></li></ul></li><li><a href="conclusion.html">Tổng kết</a></li></ul></nav>
+  </div>
+</header>
+<main class="wrap">
+
+<p class="eyebrow">Bài 4 · Chương 4: Giao tiếp và hợp tác trong môi trường số · Điểm tối đa 0,5</p>
+<h1>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h1>
+<nav class="pager top-pager"><a class="btn ghost" href="projects.html">← Quay lại Dự án</a><a class="btn" href="bai5.html">Bài tiếp theo →</a></nav>
+
+<section class="card">
+  <h2>a) Mục tiêu bài tập</h2>
+  <p>Yêu cầu của bài tập: cùng nhóm chọn một chủ đề học thuật hoặc dự án; lên kế hoạch cuộc họp trực tuyến (chọn nền tảng, xác định mục tiêu và chương trình nghị sự, phân công vai trò, chuẩn bị tài liệu); tổ chức họp 20–30 phút và ghi lại khi có sự đồng ý của mọi thành viên; lập biên bản, tổng hợp quyết định và nhiệm vụ, chia sẻ kết quả; mỗi thành viên viết đánh giá ngắn.</p><p>Kỹ năng được rèn luyện: tổ chức và tham gia họp trực tuyến chuyên nghiệp, phân công trách nhiệm, ghi biên bản, quản lý công việc nhóm bằng công cụ trực tuyến (kết hợp Trello theo gợi ý của đề).</p>
+</section>
+
+<section class="card">
+  <h2>b) Tóm tắt quá trình thực hiện</h2>
+  <h3>Các bước thực hiện</h3>
+  <ol><li>Nhóm thống nhất chủ đề dự án: thiết kế poster tuyên truyền "Sử dụng AI có trách nhiệm trong học tập" (có thể thay bằng chủ đề nhóm đã chọn).</li><li>Chọn Google Meet vì miễn phí, chạy trên trình duyệt và dễ chia sẻ liên kết; dùng Trello để theo dõi nhiệm vụ.</li><li>Xây dựng chương trình nghị sự 25 phút và phân công vai trò: điều phối, thư ký, người trình bày.</li><li>Chuẩn bị tài liệu: bản phác thảo ý tưởng poster, bảng nhiệm vụ trên Trello, mẫu biên bản.</li><li>Tổ chức họp, xin ý kiến đồng ý trước khi ghi hình, thảo luận và chốt quyết định.</li><li>Sau họp: lập biên bản, cập nhật Trello, gửi tài liệu cho các thành viên; mỗi người viết đánh giá ngắn.</li></ol>
+  <h3>Công cụ đã sử dụng</h3>
+  <ul><li>Google Meet (nền tảng họp)</li><li>Trello (quản lý nhiệm vụ nhóm)</li><li>Google Docs hoặc Google Drive (biên bản và tài liệu dùng chung)</li><li>Claude (Anthropic): hỗ trợ soạn khung kế hoạch và biên bản</li></ul>
+  <h3>Khó khăn và cách giải quyết</h3>
+  <div class="tablewrap"><table><thead><tr><th>Khó khăn</th><th>Cách giải quyết</th></tr></thead><tbody><tr><td>Khó thống nhất giờ họp vì lịch học khác nhau.</td><td>Dùng bình chọn trong nhóm chat và chọn khung giờ nhiều người rảnh nhất.</td></tr><tr><td>Cuộc họp dễ kéo dài lan man.</td><td>Điều phối viên giữ giờ theo từng mục, vấn đề chưa xong chuyển sang Trello thảo luận tiếp.</td></tr><tr><td>Quyết định không được ghi lại nên dễ quên.</td><td>Thư ký ghi trực tiếp vào biên bản chung và đăng nhiệm vụ lên Trello ngay sau họp.</td></tr></tbody></table></div>
+  <p class="note"><strong>Khai báo sử dụng AI:</strong> Mình dùng Claude (Anthropic) để gợi ý khung kế hoạch và biên bản cuộc họp. Nội dung cuộc họp, các quyết định, phân công và phần đánh giá do nhóm và mình tự thực hiện.</p>
+</section>
+
+<section class="card">
+  <h2>c) Sản phẩm cuối cùng</h2>
+  <h3>a) Kế hoạch cuộc họp</h3><div class="tablewrap"><table><caption>Thông tin kế hoạch cuộc họp trực tuyến</caption><thead><tr><th>Nội dung</th><th>Chi tiết</th></tr></thead><tbody><tr><td>Nền tảng</td><td>Google Meet; liên kết cuộc họp: https://meet.google.com/meet/wcc-guyx-ktj?pli=1</td></tr><tr><td>Thời gian</td><td>22h25 ngày 29/11/2026, thời lượng 25 phút</td></tr><tr><td>Thành viên</td><td>Nguyễn Hưng Nam, Nguyễn Văn A</td></tr><tr><td>Mục tiêu</td><td>Chốt ý tưởng, bố cục và phân công thực hiện poster "Sử dụng AI có trách nhiệm trong học tập"</td></tr><tr><td>Phân công vai trò</td><td>Điều phối: Nguyễn Hưng Nam; Thư ký: Nguyễn Văn A; Người trình bày: Nguyễn Hưng Nam</td></tr><tr><td>Tài liệu chuẩn bị</td><td>Phác thảo ý tưởng, bảng nhiệm vụ Trello, mẫu biên bản, bộ nguyên tắc dùng AI (từ Bài 6)</td></tr></tbody></table></div><div class="tablewrap"><table><caption>Chương trình nghị sự</caption><thead><tr><th>Thời gian</th><th>Nội dung</th><th>Phụ trách</th></tr></thead><tbody><tr><td>0–3 phút</td><td>Khai mạc, nhắc mục tiêu, xin ý kiến ghi hình</td><td>Điều phối</td></tr><tr><td>3–8 phút</td><td>Báo cáo tiến độ chuẩn bị của từng người</td><td>Từng thành viên</td></tr><tr><td>8–18 phút</td><td>Thảo luận ý tưởng, bố cục, thông điệp poster</td><td>Cả nhóm</td></tr><tr><td>18–23 phút</td><td>Phân công nhiệm vụ và hạn hoàn thành</td><td>Điều phối, thư ký</td></tr><tr><td>23–25 phút</td><td>Tổng kết, nhắc lại quyết định, hẹn buổi sau</td><td>Người trình bày</td></tr></tbody></table></div><figure><img src="assets/b4_anh1.png" alt="Ảnh chụp màn hình cuộc họp nhóm trên Google Meet"><figcaption>Ảnh chụp màn hình cuộc họp nhóm trên Google Meet</figcaption></figure><h3>b) Biên bản cuộc họp</h3><div class="tablewrap"><table><caption>Biên bản cuộc họp nhóm</caption><thead><tr><th>Mục</th><th>Nội dung</th></tr></thead><tbody><tr><td>Thời gian, địa điểm</td><td>22h25 đến 22h50 ngày 29/11/2026; họp trực tuyến trên Google Meet</td></tr><tr><td>Thành phần tham dự</td><td>Nguyễn Hưng Nam, Nguyễn Văn A. Có mặt đủ 2/2 thành viên, không có ai vắng.</td></tr><tr><td>Nội dung thảo luận</td><td>Thống nhất thông điệp chính; thảo luận hai phương án bố cục; rà soát quy định ghi rõ việc dùng AI</td></tr><tr><td>Quyết định</td><td>Chọn bố cục dọc, dùng bảng màu ấm thống nhất; thông điệp chính là "Dùng AI để hỗ trợ, không để thay thế"; thống nhất phân công và hạn hoàn thành từng việc; ghi rõ công cụ AI đã dùng trên sản phẩm.</td></tr></tbody></table></div><div class="tablewrap"><table><caption>Nhiệm vụ tiếp theo</caption><thead><tr><th>Nhiệm vụ</th><th>Người phụ trách</th><th>Hạn hoàn thành</th></tr></thead><tbody><tr><td>Tìm tư liệu và số liệu cho poster</td><td>Nguyễn Văn A</td><td>9h00 ngày 30/11/2026</td></tr><tr><td>Soạn nội dung chữ</td><td>Nguyễn Hưng Nam</td><td>10h00 ngày 30/11/2026</td></tr><tr><td>Thiết kế bản nháp poster</td><td>Nguyễn Hưng Nam</td><td>9h00 ngày 01/12/2026</td></tr><tr><td>Rà soát nguồn ảnh, ghi chú việc dùng AI</td><td>Nguyễn Văn A</td><td>10h00 ngày 01/12/2026</td></tr></tbody></table></div><figure><img src="assets/b4_anh2.png" alt="Bảng Trello theo dõi nhiệm vụ của nhóm"><figcaption>Bảng Trello theo dõi nhiệm vụ của nhóm</figcaption></figure><p>Biên bản và tài liệu được chia sẻ giữa hai thành viên qua Google Drive, nội dung đầy đủ của biên bản nằm ngay trong trang này.</p><h3>c) Cách thức phối hợp trực tuyến</h3><ul><li><strong>Kênh trao đổi nhanh:</strong> nhóm chat; <strong>họp chính thức:</strong> Google Meet.</li><li><strong>Theo dõi việc:</strong> Trello với 3 cột Cần làm, Đang làm, Hoàn thành.</li><li><strong>Tài liệu chung:</strong> Google Drive, đặt tên tệp theo quy tắc ở Bài 1.</li><li><strong>Quy tắc họp:</strong> vào đúng giờ, tắt micro khi không nói, chỉ ghi hình khi mọi người đồng ý.</li></ul><h3>d) Đánh giá cá nhân về hiệu quả cuộc họp</h3><p>Cuộc họp diễn ra đúng kế hoạch và hoàn thành tốt mục tiêu đã đề ra: cả hai thành viên đều có mặt, thảo luận tập trung và chốt được ý tưởng, bố cục cho poster. Nội dung công việc được phân chia đầy đủ, rõ người, rõ hạn nên không bị chồng chéo. Mình làm điều phối nên giữ giờ theo từng mục, nhờ vậy cuộc họp không bị kéo dài. Điều làm tốt là Nguyễn Văn A ghi biên bản kịp thời, các quyết định được cập nhật ngay lên Trello. Điều chưa tốt là lúc đầu nhóm mất vài phút chỉnh âm thanh và kết nối nên hơi hụt thời gian. Mình đề xuất lần sau thử thiết bị trước giờ họp 5 phút và gửi trước nội dung cần thảo luận để họp nhanh hơn.</p>
+  
+</section>
+
+<nav class="pager"><a class="btn ghost" href="bai3.html">← Bài trước</a><a class="btn ghost" href="projects.html">Danh mục Dự án</a><a class="btn" href="bai5.html">Bài tiếp theo →</a></nav>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Nguyễn Hưng Nam – Mã sinh viên: 2552210033 – Lớp: K20A SPAN – Học phần: Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo</p>
+    <p class="small">Trường Đại học Sư phạm Nghệ thuật Trung ương – Khoa Giáo dục Đại cương</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<script>
+(function() {
+  try {
+    var _origFetch = window.fetch;
+    Object.defineProperty(window, "fetch", {
+      get: function() { return _origFetch; },
+      set: function(fn) { _origFetch = fn; },
+      configurable: true,
+      enumerable: true
+    });
+    if (typeof Window !== "undefined" && Window.prototype) {
+      try {
+        Object.defineProperty(Window.prototype, "fetch", {
+          get: function() { return _origFetch; },
+          set: function(fn) { _origFetch = fn; },
+          configurable: true,
+          enumerable: true
+        });
+      } catch (_) {}
+    }
+  } catch (_) {}
+  window.addEventListener("error", function(e) {
+    if (e && e.message && e.message.indexOf("Cannot set property fetch of #<Window>") !== -1) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return true;
+    }
+  }, true);
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập | Portfolio Nguyễn Hưng Nam</title>
+<meta name="description" content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Portfolio <span>Nguyễn Hưng Nam</span></a>
+    <button class="burger" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav><ul class="menu"><li><a href="index.html">Giới thiệu</a></li><li class="has-sub"><a href="projects.html" class="active">Dự án ▾</a><ul class="sub"><li><a href="bai1.html">Bài 1: Thao tác cơ bản với tệp tin và thư mục</a></li><li><a href="bai2.html">Bài 2: Tìm kiếm và đánh giá thông tin học thuật</a></li><li><a href="bai3.html">Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</a></li><li><a href="bai4.html">Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</a></li><li><a href="bai5.html">Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</a></li><li><a href="bai6.html">Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</a></li></ul></li><li><a href="conclusion.html">Tổng kết</a></li></ul></nav>
+  </div>
+</header>
+<main class="wrap">
+
+<p class="eyebrow">Bài 3 · Chương 3: Tổng quan về trí tuệ nhân tạo · Điểm tối đa 0,75</p>
+<h1>Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</h1>
+<nav class="pager top-pager"><a class="btn ghost" href="projects.html">← Quay lại Dự án</a><a class="btn" href="bai4.html">Bài tiếp theo →</a></nav>
+
+<section class="card">
+  <h2>a) Mục tiêu bài tập</h2>
+  <p>Yêu cầu của bài tập: chọn 3 tác vụ học tập phổ biến (tóm tắt tài liệu, giải thích khái niệm phức tạp, tạo bộ câu hỏi ôn tập); với mỗi tác vụ viết 3 phiên bản prompt (cơ bản, cải tiến, nâng cao); thử nghiệm với một công cụ AI, so sánh kết quả, phân tích lý do và tổng hợp nguyên tắc viết prompt hiệu quả.</p><p>Kỹ năng được rèn luyện: viết prompt rõ ràng, có cấu trúc; vận dụng role prompting, chain-of-thought và few-shot examples; đánh giá và kiểm chứng đầu ra của AI.</p>
+</section>
+
+<section class="card">
+  <h2>b) Tóm tắt quá trình thực hiện</h2>
+  <h3>Các bước thực hiện</h3>
+  <ol><li>Chọn 3 tác vụ: tóm tắt một tài liệu học thuật, giải thích khái niệm "mô hình khuếch tán (diffusion)", tạo bộ câu hỏi ôn tập về liêm chính học thuật.</li><li>Viết 3 phiên bản prompt cho mỗi tác vụ (tổng 9 prompt).</li><li>Chạy từng prompt trong một cuộc trò chuyện mới, giữ nguyên công cụ và chế độ để so sánh công bằng; chụp màn hình kết quả.</li><li>Chấm từng kết quả theo 4 tiêu chí: độ chính xác, cấu trúc, mức phù hợp với người học, khả năng dùng ngay.</li><li>Phân tích nguyên nhân khác biệt và tổng hợp nguyên tắc.</li></ol>
+  <h3>Công cụ đã sử dụng</h3>
+  <ul><li>Một công cụ AI hội thoại (ví dụ ChatGPT hoặc Claude; ghi tên công cụ thực tế đã dùng)</li><li>Công cụ chụp màn hình</li></ul>
+  <h3>Khó khăn và cách giải quyết</h3>
+  <div class="tablewrap"><table><thead><tr><th>Khó khăn</th><th>Cách giải quyết</th></tr></thead><tbody><tr><td>Kết quả thay đổi giữa các lần chạy dù cùng một prompt.</td><td>Chạy mỗi prompt ít nhất hai lần, ghi lại xu hướng chung thay vì chỉ một kết quả.</td></tr><tr><td>Prompt nâng cao quá dài khiến AI bỏ sót yêu cầu.</td><td>Đánh số yêu cầu, tách phần ví dụ mẫu và phần dữ liệu đầu vào bằng dấu phân cách rõ ràng.</td></tr><tr><td>AI có thể đưa thông tin sai nhưng trình bày rất thuyết phục.</td><td>Luôn đối chiếu với tài liệu gốc và yêu cầu AI chỉ rõ chỗ không chắc chắn.</td></tr></tbody></table></div>
+  <p class="note"><strong>Khai báo sử dụng AI:</strong> [ghi rõ công cụ AI và mục đích đã dùng trong bài này; nếu không dùng, ghi "Không sử dụng AI"].</p>
+</section>
+
+<section class="card">
+  <h2>c) Sản phẩm cuối cùng</h2>
+  <h3>a) Tác vụ 1: Tóm tắt tài liệu học thuật</h3><div class="tablewrap"><table><caption>Ba phiên bản prompt cho tác vụ tóm tắt</caption><thead><tr><th>Phiên bản</th><th>Nội dung prompt</th></tr></thead><tbody><tr><td>Cơ bản</td><td>Tóm tắt bài này: 1.1. Art Education and Technology Integration
+Art education helps students build creative expression, visual literacy, critical thinking, and problem-solving through fine and visual art practices (Dobbs, 1998; Freedman, 2025; E. Zimmerman, 2009). As educational contexts increasingly incorporate digital tools and technologies, art education has become a site for examining how emerging technologies intersect with fundamental pedagogical goals (Black & Browning, 2011). Over time, teachers have brought different technologies into art classrooms. They have used slide projectors to show famous artworks, digital cameras to record projects, and software such as Adobe Photoshop for image editing. Tablets have also been used for digital drawing (Tillander, 2011). In most cases, these digital tools have supported teaching and learning rather than replaced the creative process itself. Students still made the main artistic choices and carried out their ideas (Bardzell, 2007; Jones, 1986). Yet, these tools have several limits. They take time and training to use well. They give little help with idea development or concept exploration. They do not do much for students who face creative blocks or technical difficulties. They also create extra costs for teachers and schools (Alawad, 2013). Prior research on technology integration in art education has examined diverse platforms from traditional digital tools to augmented and virtual reality (González-Zamar & Abad-Segura, 2020; Huang et al., 2016). However, the rapid emergence of AI tools presents a fundamentally different technological landscape, requiring fresh examination of how educators can thoughtfully integrate these tools.</td></tr><tr><td>Cải tiến</td><td>Hãy tóm tắt văn bản dưới đây trong tối đa 150 từ cho sinh viên năm nhất. Gồm 4 phần: vấn đề chính, phương pháp hoặc lập luận, kết luận, hạn chế. Trình bày bằng gạch đầu dòng, viết tiếng Việt, giữ nguyên thuật ngữ tiếng Anh quan trọng. Văn bản: 1.1. Art Education and Technology Integration
+Art education helps students build creative expression, visual literacy, critical thinking, and problem-solving through fine and visual art practices (Dobbs, 1998; Freedman, 2025; E. Zimmerman, 2009). As educational contexts increasingly incorporate digital tools and technologies, art education has become a site for examining how emerging technologies intersect with fundamental pedagogical goals (Black & Browning, 2011). Over time, teachers have brought different technologies into art classrooms. They have used slide projectors to show famous artworks, digital cameras to record projects, and software such as Adobe Photoshop for image editing. Tablets have also been used for digital drawing (Tillander, 2011). In most cases, these digital tools have supported teaching and learning rather than replaced the creative process itself. Students still made the main artistic choices and carried out their ideas (Bardzell, 2007; Jones, 1986). Yet, these tools have several limits. They take time and training to use well. They give little help with idea development or concept exploration. They do not do much for students who face creative blocks or technical difficulties. They also create extra costs for teachers and schools (Alawad, 2013). Prior research on technology integration in art education has examined diverse platforms from traditional digital tools to augmented and virtual reality (González-Zamar & Abad-Segura, 2020; Huang et al., 2016). However, the rapid emergence of AI tools presents a fundamentally different technological landscape, requiring fresh examination of how educators can thoughtfully integrate these tools.</td></tr><tr><td>Nâng cao</td><td>Vai trò: bạn là trợ lý nghiên cứu giàu kinh nghiệm, hướng dẫn sinh viên nghệ thuật đọc tài liệu học thuật. Hãy làm lần lượt: (1) liệt kê các luận điểm chính, mỗi ý kèm câu nguồn trong văn bản; (2) loại bỏ chi tiết phụ; (3) viết bản tóm tắt tối đa 150 từ; (4) tự kiểm tra từng ý có thật sự xuất hiện trong văn bản không và đánh dấu ý chưa chắc chắn. Không được thêm thông tin ngoài văn bản. Ví dụ mẫu: Văn bản: "Khảo sát cho thấy nhiều sinh viên dùng AI để viết bài nhưng ít người ghi rõ nguồn." Tóm tắt: "Vấn đề: sinh viên dùng AI nhưng thiếu minh bạch. Kết luận: cần quy định ghi nguồn." Văn bản cần tóm tắt: 1.1. Art Education and Technology Integration
+Art education helps students build creative expression, visual literacy, critical thinking, and problem-solving through fine and visual art practices (Dobbs, 1998; Freedman, 2025; E. Zimmerman, 2009). As educational contexts increasingly incorporate digital tools and technologies, art education has become a site for examining how emerging technologies intersect with fundamental pedagogical goals (Black & Browning, 2011). Over time, teachers have brought different technologies into art classrooms. They have used slide projectors to show famous artworks, digital cameras to record projects, and software such as Adobe Photoshop for image editing. Tablets have also been used for digital drawing (Tillander, 2011). In most cases, these digital tools have supported teaching and learning rather than replaced the creative process itself. Students still made the main artistic choices and carried out their ideas (Bardzell, 2007; Jones, 1986). Yet, these tools have several limits. They take time and training to use well. They give little help with idea development or concept exploration. They do not do much for students who face creative blocks or technical difficulties. They also create extra costs for teachers and schools (Alawad, 2013). Prior research on technology integration in art education has examined diverse platforms from traditional digital tools to augmented and virtual reality (González-Zamar & Abad-Segura, 2020; Huang et al., 2016). However, the rapid emergence of AI tools presents a fundamentally different technological landscape, requiring fresh examination of how educators can thoughtfully integrate these tools.</td></tr></tbody></table></div><h3>b) Tác vụ 2: Giải thích khái niệm phức tạp</h3><div class="tablewrap"><table><caption>Ba phiên bản prompt cho tác vụ giải thích khái niệm</caption><thead><tr><th>Phiên bản</th><th>Nội dung prompt</th></tr></thead><tbody><tr><td>Cơ bản</td><td>Giải thích mô hình khuếch tán.</td></tr><tr><td>Cải tiến</td><td>Giải thích mô hình khuếch tán (diffusion model) trong tạo ảnh bằng AI cho sinh viên ngành nghệ thuật không có nền tảng toán. Tối đa 300 từ, có một phép ẩn dụ đời thường, chia 3 phần: ý tưởng chính, cách hoạt động, ví dụ ứng dụng.</td></tr><tr><td>Nâng cao</td><td>Vai trò: bạn là giảng viên giàu kinh nghiệm giải thích khái niệm khó cho người mới. Hãy suy luận từng bước: (1) xác định 3 ý cốt lõi cần hiểu; (2) chọn một phép ẩn dụ gần gũi với hội họa; (3) giải thích theo thứ tự từ đơn giản đến phức tạp; (4) kết thúc bằng 3 câu hỏi kiểm tra hiểu bài. Ví dụ mẫu về phong cách giải thích: "Nén ảnh JPEG giống như vẽ phác thảo, bỏ bớt chi tiết mắt thường khó thấy nhưng vẫn giữ được bức tranh." Đối tượng: sinh viên sư phạm nghệ thuật. Độ dài: tối đa 350 từ.</td></tr></tbody></table></div><h3>c) Tác vụ 3: Tạo bộ câu hỏi ôn tập</h3><div class="tablewrap"><table><caption>Ba phiên bản prompt cho tác vụ tạo câu hỏi ôn tập</caption><thead><tr><th>Phiên bản</th><th>Nội dung prompt</th></tr></thead><tbody><tr><td>Cơ bản</td><td>Tạo câu hỏi ôn tập về liêm chính học thuật.</td></tr><tr><td>Cải tiến</td><td>Tạo 10 câu hỏi trắc nghiệm, mỗi câu 4 đáp án, về liêm chính học thuật trong môi trường số cho sinh viên đại học (đạo văn, trích dẫn, sử dụng AI). Phân bố độ khó: 5 dễ, 3 trung bình, 2 khó. Cuối bài có đáp án và giải thích một câu cho mỗi câu hỏi.</td></tr><tr><td>Nâng cao</td><td>Vai trò: bạn là giảng viên thiết kế đề kiểm tra. Hãy làm lần lượt: (1) lập bảng chủ đề cần kiểm tra và mức độ nhận thức; (2) viết 10 câu hỏi theo mẫu bên dưới; (3) kiểm tra từng câu để chắc chắn chỉ có một đáp án đúng, sửa nếu cần; (4) xuất kết quả dạng bảng gồm câu hỏi, đáp án, giải thích. Mẫu: "Câu 1. Hành vi nào sau đây là đạo văn? A. ... B. ... C. ... D. ... Đáp án: B. Giải thích: ..." Chủ đề: đạo văn, trích dẫn, quyền riêng tư dữ liệu, khai báo sử dụng AI.</td></tr></tbody></table></div><figure><img src="assets/b3_anh1.png" alt="Kết quả 3 prompt (cơ bản, cải tiến, nâng cao) cho tác vụ 1: tóm tắt tài liệu"><figcaption>Kết quả 3 prompt (cơ bản, cải tiến, nâng cao) cho tác vụ 1: tóm tắt tài liệu</figcaption></figure><figure><img src="assets/b3_anh2.png" alt="Kết quả 3 prompt cho tác vụ 2: giải thích khái niệm mô hình khuếch tán"><figcaption>Kết quả 3 prompt cho tác vụ 2: giải thích khái niệm mô hình khuếch tán</figcaption></figure><figure><img src="assets/b3_anh3.png" alt="Kết quả 3 prompt cho tác vụ 3: tạo bộ câu hỏi ôn tập"><figcaption>Kết quả 3 prompt cho tác vụ 3: tạo bộ câu hỏi ôn tập</figcaption></figure><h3>d) Bảng so sánh kết quả</h3><p>Bảng dưới đây ghi các xu hướng thường gặp khi so sánh ba mức prompt. Hãy đối chiếu với kết quả thực tế của bạn và sửa lại nhận xét nếu khác.</p><div class="tablewrap"><table><caption>So sánh kết quả đầu ra của ba phiên bản prompt</caption><thead><tr><th>Tiêu chí</th><th>Cơ bản</th><th>Cải tiến</th><th>Nâng cao</th></tr></thead><tbody><tr><td>Độ chính xác</td><td>Dễ chung chung, có thể lệch trọng tâm</td><td>Bám sát yêu cầu hơn</td><td>Cao nhất, có bước tự kiểm tra</td></tr><tr><td>Cấu trúc</td><td>Không ổn định, độ dài tùy ý</td><td>Đúng số phần, độ dài yêu cầu</td><td>Đúng cấu trúc và có phần phụ (câu hỏi kiểm tra, chú thích nguồn)</td></tr><tr><td>Phù hợp người học</td><td>Thấp, không rõ đối tượng</td><td>Khá, đúng trình độ</td><td>Cao, ngôn ngữ và ví dụ sát đối tượng</td></tr><tr><td>Khả năng dùng ngay</td><td>Cần chỉnh sửa nhiều</td><td>Chỉnh sửa ít</td><td>Thường dùng được ngay sau khi kiểm chứng</td></tr></tbody></table></div><h3>e) Vì sao một số prompt hiệu quả hơn</h3><ul><li>Prompt cải tiến nêu rõ <strong>đối tượng, độ dài, cấu trúc</strong>, nên mô hình ít phải đoán ý người dùng (Anthropic, không rõ năm).</li><li>Prompt nâng cao thêm <strong>vai trò</strong> để định hướng giọng điệu và mức độ chuyên môn.</li><li><strong>Chain-of-thought</strong> (suy luận từng bước) giúp mô hình xử lý có trình tự và giảm sai sót ở tác vụ nhiều bước (Wei et al., 2022).</li><li><strong>Few-shot examples</strong> cho mô hình một mẫu cụ thể để bắt chước định dạng và phong cách (Brown et al., 2020).</li></ul><h3>f) Nguyên tắc và mẹo viết prompt hiệu quả</h3><ol><li>Nêu <strong>vai trò</strong> của AI và <strong>đối tượng</strong> người đọc.</li><li>Nói rõ <strong>mục tiêu</strong> cuối cùng của tác vụ.</li><li>Cung cấp <strong>ngữ cảnh và dữ liệu đầu vào</strong> đầy đủ, tách riêng bằng dấu phân cách.</li><li>Quy định <strong>định dạng, độ dài, ngôn ngữ</strong> của đầu ra.</li><li>Chia tác vụ lớn thành <strong>các bước nhỏ</strong> có thứ tự.</li><li>Đưa <strong>ví dụ mẫu</strong> khi cần định dạng hoặc phong cách cụ thể.</li><li>Thêm <strong>ràng buộc</strong>: không bịa thông tin, nêu rõ chỗ chưa chắc chắn.</li><li><strong>Lặp và cải tiến</strong>: đọc kết quả, bổ sung yêu cầu, chạy lại.</li><li><strong>Kiểm chứng</strong> kết quả với nguồn gốc trước khi sử dụng.</li></ol>
+  <h3>Tài liệu tham khảo (Harvard)</h3><ul class="refs"><li>Anthropic (không rõ năm) <em>Prompt engineering overview</em>. Truy cập tại: <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview</a> (Ngày truy cập: 24/10/2026).</li><li>Brown, T.B. et al. (2020) 'Language models are few-shot learners', <em>Advances in Neural Information Processing Systems</em>, 33.</li><li>Wei, J. et al. (2022) 'Chain-of-thought prompting elicits reasoning in large language models', <em>Advances in Neural Information Processing Systems</em>, 35.</li></ul>
+</section>
+
+<nav class="pager"><a class="btn ghost" href="bai2.html">← Bài trước</a><a class="btn ghost" href="projects.html">Danh mục Dự án</a><a class="btn" href="bai4.html">Bài tiếp theo →</a></nav>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Nguyễn Hưng Nam – Mã sinh viên: 2552210033 – Lớp: K20A SPAN – Học phần: Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo</p>
+    <p class="small">Trường Đại học Sư phạm Nghệ thuật Trung ương – Khoa Giáo dục Đại cương</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        // 1. Ensure window.fetch is a writable property so extensions assigning `window.fetch = ...` do not throw
+        try {
+          var _origFetch = window.fetch;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              value: _origFetch,
+              writable: true,
+              configurable: true,
+              enumerable: true
+            });
+          } catch (_) {
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return _origFetch; },
+              set: function(fn) { _origFetch = fn; },
+              configurable: true,
+              enumerable: true
+            });
+          }
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', {
+                get: function() { return _origFetch; },
+                set: function(fn) {
+                  _origFetch = fn;
+                  try {
+                    window.fetch = fn;
+                  } catch (_) {}
+                },
+                configurable: true,
+                enumerable: true
+              });
+            } catch (_) {}
+          }
+        } catch (_) {}
+
+        // 2. Intercept console.error to prevent external Chrome extension injection errors from polluting logs
+        try {
+          var _origConsoleError = console.error;
+          console.error = function() {
+            var args = Array.prototype.slice.call(arguments);
+            var first = args[0];
+            if (
+              first &&
+              ((typeof first === 'string' &&
+                (first.indexOf('Cannot set property fetch') !== -1 ||
+                  first.indexOf('chrome-extension://') !== -1)) ||
+                (first.message &&
+                  first.message.indexOf('Cannot set property fetch') !== -1) ||
+                (first.stack && first.stack.indexOf('chrome-extension://') !== -1))
+            ) {
+              return;
+            }
+            return _origConsoleError.apply(console, args);
+          };
+        } catch (_) {}
+
+        // 3. Catch global unhandled errors originating from extensions
+        window.addEventListener(
+          'error',
+          function(e) {
+            if (
+              e &&
+              ((e.message && e.message.indexOf('Cannot set property fetch') !== -1) ||
+                (e.filename && e.filename.indexOf('chrome-extension://') !== -1))
+            ) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              return true;
+            }
+          },
+          true
+        );
+
+        window.addEventListener(
+          'unhandledrejection',
+          function(e) {
+            if (
+              e &&
+              e.reason &&
+              ((e.reason.message &&
+                e.reason.message.indexOf('Cannot set property fetch') !== -1) ||
+                (e.reason.stack && e.reason.stack.indexOf('chrome-extension://') !== -1))
+            ) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+    <title>Portfolio Nguyễn Hưng Nam – Công nghệ số &amp; AI</title>
+    <meta name="description" content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo của sinh viên Nguyễn Hưng Nam (K20A SPAN – Trường Đại học Sư phạm Nghệ thuật Trung ương), tích hợp công cụ thiết lập URL Published." />
+    <meta property="og:title" content="Portfolio Nguyễn Hưng Nam – Công nghệ số &amp; AI" />
+    <meta property="og:description" content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo của sinh viên Nguyễn Hưng Nam (K20A SPAN – Trường Đại học Sư phạm Nghệ thuật Trung ương)." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#FAF9F6] text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

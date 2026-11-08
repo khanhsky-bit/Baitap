@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<script>
+(function() {
+  try {
+    var _origFetch = window.fetch;
+    Object.defineProperty(window, "fetch", {
+      get: function() { return _origFetch; },
+      set: function(fn) { _origFetch = fn; },
+      configurable: true,
+      enumerable: true
+    });
+    if (typeof Window !== "undefined" && Window.prototype) {
+      try {
+        Object.defineProperty(Window.prototype, "fetch", {
+          get: function() { return _origFetch; },
+          set: function(fn) { _origFetch = fn; },
+          configurable: true,
+          enumerable: true
+        });
+      } catch (_) {}
+    }
+  } catch (_) {}
+  window.addEventListener("error", function(e) {
+    if (e && e.message && e.message.indexOf("Cannot set property fetch of #<Window>") !== -1) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return true;
+    }
+  }, true);
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tổng kết | Portfolio Nguyễn Hưng Nam</title>
+<meta name="description" content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Portfolio <span>Nguyễn Hưng Nam</span></a>
+    <button class="burger" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav><ul class="menu"><li><a href="index.html">Giới thiệu</a></li><li class="has-sub"><a href="projects.html">Dự án ▾</a><ul class="sub"><li><a href="bai1.html">Bài 1: Thao tác cơ bản với tệp tin và thư mục</a></li><li><a href="bai2.html">Bài 2: Tìm kiếm và đánh giá thông tin học thuật</a></li><li><a href="bai3.html">Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</a></li><li><a href="bai4.html">Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</a></li><li><a href="bai5.html">Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</a></li><li><a href="bai6.html">Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</a></li></ul></li><li><a href="conclusion.html" class="active">Tổng kết</a></li></ul></nav>
+  </div>
+</header>
+<main class="wrap">
+
+<p class="eyebrow">Tổng kết – Conclusion</p>
+<h1>Nhìn lại hành trình làm Portfolio</h1>
+
+<section class="card">
+  <h2>Trải nghiệm và cảm nhận cá nhân</h2>
+  <p>Lúc đầu mình phải mò từng chút một để làm Portfolio vì mọi thứ còn rất mới. Nhưng càng học thêm và biết nhiều hơn, mình càng thấy việc xây dựng một trang web của riêng mình thật thú vị. Sau mỗi bài tập, mình tự tin hơn với công nghệ số và biết cách dùng AI như một công cụ hỗ trợ.</p>
+</section>
+
+<section class="card">
+  <h2>Kiến thức và kỹ năng quan trọng nhất đã tiếp thu</h2>
+  <div class="tablewrap"><table><thead><tr><th>Chương</th><th>Kiến thức và kỹ năng chính</th></tr></thead><tbody>
+    <tr><td>1. Máy tính, thiết bị ngoại vi</td><td>Tổ chức thư mục, đặt tên tệp có hệ thống, phân biệt Copy, Cut, Delete và khôi phục tệp</td></tr>
+    <tr><td>2. Khai thác dữ liệu, thông tin</td><td>Tìm kiếm bằng toán tử nâng cao, đánh giá độ tin cậy nguồn, trích dẫn Harvard</td></tr>
+    <tr><td>3. Trí tuệ nhân tạo</td><td>Viết prompt có vai trò, ngữ cảnh, định dạng; dùng chain-of-thought, few-shot; kiểm chứng kết quả</td></tr>
+    <tr><td>4. Giao tiếp, hợp tác số</td><td>Tổ chức họp trực tuyến, ghi biên bản, quản lý nhiệm vụ nhóm</td></tr>
+    <tr><td>5. Sáng tạo nội dung số</td><td>Dùng AI tạo sinh hỗ trợ thiết kế, biên tập và khai báo việc sử dụng AI</td></tr>
+    <tr><td>6. An toàn, liêm chính học thuật</td><td>Bộ nguyên tắc sử dụng AI có trách nhiệm, bảo vệ dữ liệu cá nhân, tôn trọng bản quyền</td></tr>
+  </tbody></table></div>
+  <p>Điều quan trọng nhất mình rút ra: công nghệ và AI chỉ thật sự hữu ích khi mình chủ động học, tự kiểm tra và chịu trách nhiệm với sản phẩm của mình. Kiên nhẫn làm từng bước nhỏ sẽ giúp mình hoàn thành được những việc ban đầu tưởng là khó.</p>
+</section>
+
+<section class="card">
+  <h2>Điều tâm đắc nhất và những thách thức</h2>
+  <p><strong>Tâm đắc nhất:</strong> mình đã hoàn thành được một trang web Portfolio hoàn chỉnh của riêng mình, có đủ các trang và sản phẩm của từng bài tập.</p>
+  <p><strong>Thách thức:</strong> lúc đầu mình chưa quen với ngôn ngữ code (HTML) nên rất bối rối khi chỉnh sửa. Mình vượt qua bằng cách thử từng bước nhỏ, kiểm tra lại trên trình duyệt và sửa dần cho đến khi chạy đúng.</p>
+</section>
+
+<section class="card">
+  <h2>Khai báo sử dụng AI trong Portfolio</h2>
+  <div class="tablewrap"><table><thead><tr><th>Công cụ</th><th>Mục đích</th><th>Trang</th></tr></thead><tbody>
+    <tr><td>Claude (Anthropic)</td><td>Gợi ý bố cục, soạn nháp nội dung, chỉnh sửa ngôn ngữ</td><td>Các trang bài tập</td></tr>
+    <tr><td>Gemini</td><td>Tạo hình minh họa</td><td>Bài 5</td></tr>
+  </tbody></table></div>
+  <p class="small">Phần cảm nhận và tự đánh giá do chính mình viết.</p>
+</section>
+
+<section class="card">
+  <h2>Liên kết đến các trang bài tập đã hoàn thành</h2>
+  <ul class="links"><li><a href="bai1.html">Bài 1: Thao tác cơ bản với tệp tin và thư mục</a> <span class="small">(Chương 1: Máy tính và các thiết bị ngoại vi)</span></li><li><a href="bai2.html">Bài 2: Tìm kiếm và đánh giá thông tin học thuật</a> <span class="small">(Chương 2: Khai thác dữ liệu và thông tin)</span></li><li><a href="bai3.html">Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</a> <span class="small">(Chương 3: Tổng quan về trí tuệ nhân tạo)</span></li><li><a href="bai4.html">Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</a> <span class="small">(Chương 4: Giao tiếp và hợp tác trong môi trường số)</span></li><li><a href="bai5.html">Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</a> <span class="small">(Chương 5: Sáng tạo nội dung số)</span></li><li><a href="bai6.html">Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</a> <span class="small">(Chương 6: An toàn và liêm chính học thuật trong môi trường số)</span></li></ul>
+  <p><a class="btn ghost" href="projects.html">← Quay lại Dự án</a> <a class="btn ghost" href="index.html">Về trang Giới thiệu</a></p>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Nguyễn Hưng Nam – Mã sinh viên: 2552210033 – Lớp: K20A SPAN – Học phần: Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo</p>
+    <p class="small">Trường Đại học Sư phạm Nghệ thuật Trung ương – Khoa Giáo dục Đại cương</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

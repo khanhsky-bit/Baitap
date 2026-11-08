@@ -1,0 +1,8 @@
+{
+  "name": "LinkConfig",
+  "description": "Easily configure and manage your application's public URL settings within the published section.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

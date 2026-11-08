@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<script>
+(function() {
+  try {
+    var _origFetch = window.fetch;
+    Object.defineProperty(window, "fetch", {
+      get: function() { return _origFetch; },
+      set: function(fn) { _origFetch = fn; },
+      configurable: true,
+      enumerable: true
+    });
+    if (typeof Window !== "undefined" && Window.prototype) {
+      try {
+        Object.defineProperty(Window.prototype, "fetch", {
+          get: function() { return _origFetch; },
+          set: function(fn) { _origFetch = fn; },
+          configurable: true,
+          enumerable: true
+        });
+      } catch (_) {}
+    }
+  } catch (_) {}
+  window.addEventListener("error", function(e) {
+    if (e && e.message && e.message.indexOf("Cannot set property fetch of #<Window>") !== -1) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return true;
+    }
+  }, true);
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 2: Tìm kiếm và đánh giá thông tin học thuật | Portfolio Nguyễn Hưng Nam</title>
+<meta name="description" content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Portfolio <span>Nguyễn Hưng Nam</span></a>
+    <button class="burger" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav><ul class="menu"><li><a href="index.html">Giới thiệu</a></li><li class="has-sub"><a href="projects.html" class="active">Dự án ▾</a><ul class="sub"><li><a href="bai1.html">Bài 1: Thao tác cơ bản với tệp tin và thư mục</a></li><li><a href="bai2.html">Bài 2: Tìm kiếm và đánh giá thông tin học thuật</a></li><li><a href="bai3.html">Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</a></li><li><a href="bai4.html">Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</a></li><li><a href="bai5.html">Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</a></li><li><a href="bai6.html">Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</a></li></ul></li><li><a href="conclusion.html">Tổng kết</a></li></ul></nav>
+  </div>
+</header>
+<main class="wrap">
+
+<p class="eyebrow">Bài 2 · Chương 2: Khai thác dữ liệu và thông tin · Điểm tối đa 0,75</p>
+<h1>Bài 2: Tìm kiếm và đánh giá thông tin học thuật</h1>
+<nav class="pager top-pager"><a class="btn ghost" href="projects.html">← Quay lại Dự án</a><a class="btn" href="bai3.html">Bài tiếp theo →</a></nav>
+
+<section class="card">
+  <h2>a) Mục tiêu bài tập</h2>
+  <p>Yêu cầu của bài tập: chọn một chủ đề liên quan đến ngành học; tìm kiếm trên cơ sở dữ liệu học thuật, tạp chí chuyên ngành, sách chuyên khảo và nguồn mở; thu thập ít nhất 10 tài liệu (trong đó có ít nhất 5 bài báo khoa học); đánh giá độ tin cậy theo tiêu chí tác giả, cơ quan xuất bản, phương pháp nghiên cứu, trích dẫn, tính cập nhật; lập bảng tổng hợp và xếp hạng.</p><p>Chủ đề đã chọn: <strong>Ứng dụng trí tuệ nhân tạo trong giáo dục nghệ thuật</strong> (chủ đề gắn với môi trường đào tạo sư phạm nghệ thuật). Kỹ năng được rèn luyện: dùng toán tử tìm kiếm nâng cao, chọn lọc nguồn, đánh giá độ tin cậy và trích dẫn theo chuẩn Harvard.</p>
+</section>
+
+<section class="card">
+  <h2>b) Tóm tắt quá trình thực hiện</h2>
+  <h3>Các bước thực hiện</h3>
+  <ol><li>Xác định câu hỏi nghiên cứu: AI đang được ứng dụng trong giáo dục nghệ thuật như thế nào, mang lại lợi ích và rủi ro gì?</li><li>Liệt kê từ khóa tiếng Anh và tiếng Việt: artificial intelligence, generative AI, art education, visual arts; trí tuệ nhân tạo, giáo dục nghệ thuật, mỹ thuật.</li><li>Tìm trên Google Scholar bằng dấu ngoặc kép, toán tử OR, allintitle và bộ lọc năm xuất bản từ 2022.</li><li>Tìm trên Google Search bằng filetype:pdf và site: để lấy báo cáo chính sách và bài báo tiếng Việt.</li><li>Đọc tóm tắt, lọc theo mức độ liên quan, chọn 11 tài liệu phù hợp nhất với chủ đề.</li><li>Đánh giá từng tài liệu theo 5 tiêu chí, xếp hạng A, B, C và lập bảng tổng hợp.</li></ol>
+  <h3>Công cụ đã sử dụng</h3>
+  <ul><li>Google Scholar</li><li>Google Search (toán tử nâng cao)</li><li>Vietnam Journals Online (VJOL)</li><li>Trang web của UNESCO và arXiv</li><li>Công cụ AI hỗ trợ gợi ý từ khóa (ghi rõ mục đích sử dụng)</li></ul>
+  <h3>Khó khăn và cách giải quyết</h3>
+  <div class="tablewrap"><table><thead><tr><th>Khó khăn</th><th>Cách giải quyết</th></tr></thead><tbody><tr><td>Kết quả quá nhiều và nhiều bài chỉ nhắc đến AI chứ không nghiên cứu về nghệ thuật.</td><td>Thu hẹp bằng allintitle và cụm từ trong ngoặc kép, đồng thời đọc tóm tắt trước khi chọn.</td></tr><tr><td>Một số nguồn là bản thảo (preprint) hoặc tin tức, khó so sánh với bài báo phản biện.</td><td>Phân loại riêng và xếp hạng thấp hơn, chỉ dùng làm bối cảnh.</td></tr><tr><td>Không truy cập được toàn văn một số bài trả phí.</td><td>Chỉ dùng thông tin từ tóm tắt công khai và ghi chú rõ mức độ đã đọc.</td></tr></tbody></table></div>
+  <p class="note"><strong>Khai báo sử dụng AI:</strong> Mình dùng Claude (Anthropic) để gợi ý hướng chọn chủ đề, từ khóa tìm kiếm và khung bảng đánh giá nguồn. Phần tìm kiếm trên Google Scholar, đọc tóm tắt, kiểm tra số trích dẫn và quyết định chọn hay loại từng tài liệu do mình tự thực hiện.</p>
+</section>
+
+<section class="card">
+  <h2>c) Sản phẩm cuối cùng</h2>
+  <h3>a) Chiến lược tìm kiếm với toán tử nâng cao</h3><div class="tablewrap"><table><caption>Các truy vấn tìm kiếm đã sử dụng</caption><thead><tr><th>Nguồn</th><th>Truy vấn</th><th>Mục đích toán tử</th></tr></thead><tbody><tr><td>Google Scholar</td><td>"artificial intelligence" "art education"</td><td>Ngoặc kép: khớp đúng cụm từ</td></tr><tr><td>Google Scholar</td><td>allintitle: "generative AI" "art education"</td><td>Chỉ lấy bài có từ khóa trong tiêu đề</td></tr><tr><td>Google Scholar</td><td>("generative AI" OR "AI") "visual arts" education</td><td>OR mở rộng từ đồng nghĩa; lọc từ 2022</td></tr><tr><td>Google Search</td><td>"generative AI" education research guidance filetype:pdf</td><td>Lấy báo cáo chính sách dạng PDF</td></tr><tr><td>Google Search</td><td>"trí tuệ nhân tạo" "mỹ thuật" site:vjol.info.vn</td><td>Giới hạn trong kho tạp chí Việt Nam</td></tr><tr><td>CSDL thư viện trường</td><td><mark class="ph">CSDL Thư viện ĐHSP Nghệ thuật TW: "giáo dục nghệ thuật" AND "công nghệ số"</mark></td><td>Bổ sung sách chuyên khảo/tài liệu có bản quyền</td></tr></tbody></table></div><figure><img src="assets/b2_anh1.png" alt="Kết quả tìm kiếm trên Google Scholar với toán tử allintitle, cụm từ trong ngoặc kép và bộ lọc năm xuất bản từ 2022"><figcaption>Kết quả tìm kiếm trên Google Scholar với toán tử allintitle, cụm từ trong ngoặc kép và bộ lọc năm xuất bản từ 2022</figcaption></figure><h3>b) Bảng đánh giá và xếp hạng độ tin cậy</h3><p>Thang xếp hạng: <strong>A</strong> là rất tin cậy (phản biện, nhà xuất bản hoặc tổ chức uy tín, phương pháp rõ), <strong>B</strong> là tin cậy nhưng cần dùng có đối chiếu, <strong>C</strong> chỉ để tham khảo bối cảnh. Cột trích dẫn cần điền số lượng "Cited by" thực tế trên Google Scholar tại thời điểm làm bài.</p><div class="tablewrap"><table><caption>Bảng tổng hợp và xếp hạng độ tin cậy của các nguồn thông tin</caption><thead><tr><th>TT</th><th>Tài liệu (tác giả, năm)</th><th>Loại</th><th>Tác giả và cơ quan xuất bản</th><th>Phương pháp</th><th>Cập nhật, trích dẫn</th><th>Hạng</th></tr></thead><tbody><tr><td>1</td><td>Heaton, Low và Chen (2024)</td><td>Bài báo</td><td>Nhóm tác giả là nhà giáo dục nghệ thuật; tạp chí Pedagogies (NXB học thuật quốc tế)</td><td>Phản tư định tính từ 3 bối cảnh ở Singapore</td><td>2024; trích dẫn: <mark class="ph">18+</mark></td><td>A</td></tr><tr><td>2</td><td>Heaton (2025)</td><td>Bài báo</td><td>Tạp chí International Journal of Art &amp; Design Education</td><td>Bài đối thoại, tổng hợp học liệu và trải nghiệm nhà giáo</td><td>2025; trích dẫn: <mark class="ph">18+</mark></td><td>A</td></tr><tr><td>3</td><td>Yu và Sun (2026)</td><td>Bài báo</td><td>Tạp chí International Journal of Arts and Technology</td><td>Tổng quan hệ thống 372 công bố Web of Science, mô hình chủ đề</td><td>2026; trích dẫn: <mark class="ph">18+</mark></td><td>A</td></tr><tr><td>4</td><td>Miao và Holmes (2023), UNESCO</td><td>Báo cáo</td><td>UNESCO, tổ chức liên chính phủ về giáo dục</td><td>Hướng dẫn chính sách dựa trên khung đạo đức AI</td><td>2023; trích dẫn: <mark class="ph">18+</mark></td><td>A</td></tr><tr><td>5</td><td>Adeel và Yasmeen (2025)</td><td>Bài báo</td><td>Tạp chí JDSS (truy cập mở, có DOI)</td><td>Tổng quan hệ thống 20 nghiên cứu phản biện 2020–2025</td><td>2025; trích dẫn: <mark class="ph">18+</mark></td><td>B</td></tr><tr><td>6</td><td>Blair (2025)</td><td>Bài báo</td><td>Tạp chí AJSTEM, Đại học Tennessee Tech</td><td>Bài thảo luận khái niệm, không có dữ liệu thực nghiệm</td><td>2025; trích dẫn: <mark class="ph">18+</mark></td><td>B</td></tr><tr><td>7</td><td>Wang và cs. (2025)</td><td>Bài báo</td><td>Tạp chí IJICT (Inderscience)</td><td>Tổng quan kỹ thuật học sâu, GAN, chuyển phong cách</td><td>2025; trích dẫn: <mark class="ph">18+</mark></td><td>B</td></tr><tr><td>8</td><td>Sims (2024)</td><td>Bản thảo</td><td>arXiv, tác giả Đại học Kyoto Seika</td><td>Phân tích và đề xuất tích hợp Stable Diffusion; chưa phản biện</td><td>2024; trích dẫn: <mark class="ph">18+</mark></td><td>B</td></tr><tr><td>9</td><td>Nguyễn và Đặng (2026)</td><td>Bài báo</td><td>Đăng trên VJOL; cần kiểm tra tên tạp chí</td><td>Khảo sát giáo viên THCS Khánh Hòa; cần kiểm tra cỡ mẫu</td><td>2026; trích dẫn: <mark class="ph">18+</mark></td><td>B</td></tr><tr><td>10</td><td>Bùi (2025)</td><td>Bài báo</td><td>Đăng trên VJOL; cần kiểm tra tên tạp chí</td><td>Tổng hợp tài liệu quốc tế và trường hợp tại Việt Nam</td><td>2025; trích dẫn: <mark class="ph">18+</mark></td><td>B</td></tr><tr><td>11</td><td>Đào (2026)</td><td>Tin báo chí</td><td>Báo Giáo dục và Thời đại</td><td>Tường thuật sự kiện tập huấn, không phải nghiên cứu</td><td>08/2026; không áp dụng</td><td>C</td></tr></tbody></table></div><p>Kết quả: 11 tài liệu về chủ đề chính (8 bài báo khoa học, 1 báo cáo UNESCO, 1 bản thảo, 1 tin báo chí), thỏa yêu cầu tối thiểu 10 tài liệu và 5 bài báo khoa học. Có 4 nguồn hạng A, 6 nguồn hạng B và 1 nguồn hạng C. Danh mục đầy đủ theo định dạng Harvard nằm ở cuối báo cáo và cuối trang này.</p><h3>c) Nhận xét ngắn</h3><p>Các nguồn hạng A đều có phản biện hoặc đến từ tổ chức uy tín, cùng nhấn mạnh rằng AI nên hỗ trợ chứ không thay thế sáng tạo của người học (Heaton, Low và Chen, 2024; Miao và Holmes, 2023). Các tài liệu tiếng Việt còn ít và thiên về khảo sát nhận thức, vì vậy khi viết bài cần đối chiếu với nguồn quốc tế.</p>
+  <h3>Tài liệu tham khảo (Harvard)</h3><ul class="refs"><li>Adeel, T.J. và Yasmeen, K. (2025) 'An overview of artificial intelligence applications in art education', <em>Journal of Development and Social Sciences</em>, 6(2), tr. 357–366. doi:10.47205/jdss.2025(6-II)30.</li><li>Anthropic (không rõ năm) <em>Prompt engineering overview</em>. Truy cập tại: <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview</a> (Ngày truy cập: 24/10/2026).</li><li>Blair, J. (2025) 'Art meets AI: exploring the opportunities and challenges of integrating artificial intelligence in the art classroom', <em>American Journal of STEM Education: Issues and Perspectives</em>, 14, tr. 59–74. doi:10.32674/5hm64807.</li><li>Brown, T.B. et al. (2020) 'Language models are few-shot learners', <em>Advances in Neural Information Processing Systems</em>, 33.</li><li>Bùi, T.T.T. (2025) 'AI trong giáo dục liên ngành: cơ hội và thách thức đối với nghệ thuật, thiết kế và văn hóa', <em>Vietnam Journals Online (VJOL)</em>. Truy cập tại: <a href="https://vjol.info.vn/jshou/article/view/121999" target="_blank" rel="noopener">https://vjol.info.vn/jshou/article/view/121999</a> (Ngày truy cập: 24/10/2026).</li><li>Đào, H. (2026) 'Tập huấn kỹ năng ứng dụng AI nâng cao cho giảng viên, giáo viên nghệ thuật', <em>Giáo dục và Thời đại</em>, 26/08. Truy cập tại: <a href="https://giaoduc.net.vn/tap-huan-ky-nang-ung-dung-ai-nang-cao-cho-giang-vien-giao-vien-nghe-thuat-post262400.gd" target="_blank" rel="noopener">https://giaoduc.net.vn/tap-huan-ky-nang-ung-dung-ai-nang-cao-cho-giang-vien-giao-vien-nghe-thuat-post262400.gd</a> (Ngày truy cập: 24/10/2026).</li><li>Heaton, R. (2025) 'Making peace with artificial intelligence (AI) in art education', <em>International Journal of Art &amp; Design Education</em>, tr. 1–16.</li><li>Heaton, R., Low, J.H. và Chen, V. (2024) 'AI art education – artificial or intelligent? Transformative pedagogic reflections from three art educators in Singapore', <em>Pedagogies: An International Journal</em>, 19(4). doi:10.1080/1554480X.2024.2395260.</li><li>Miao, F. và Holmes, W. (2023) <em>Guidance for generative AI in education and research</em>. Paris: UNESCO. Truy cập tại: <a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693" target="_blank" rel="noopener">https://unesdoc.unesco.org/ark:/48223/pf0000386693</a> (Ngày truy cập: 24/10/2026).</li><li>Nguyễn, V.T. và Đặng, V.Đ. (2026) 'Ứng dụng trí tuệ nhân tạo (AI) trong dạy học mỹ thuật ở trung học cơ sở trên địa bàn tỉnh Khánh Hòa', <em>Vietnam Journals Online (VJOL)</em>. Truy cập tại: <a href="https://vjol.info.vn/dhkh/article/view/125945" target="_blank" rel="noopener">https://vjol.info.vn/dhkh/article/view/125945</a> (Ngày truy cập: 24/10/2026).</li><li>Sims, A. (2024) 'From creation to curriculum: examining the role of generative AI in arts universities', <em>arXiv preprint</em> arXiv:2412.16531. Truy cập tại: <a href="https://arxiv.org/abs/2412.16531" target="_blank" rel="noopener">https://arxiv.org/abs/2412.16531</a> (Ngày truy cập: 24/10/2026).</li><li>Wang, L., Li, B., Fan, X. và Ji, Y. (2025) 'A review of AI-driven art education: enhancing creativity through deep learning and digital image processing', <em>International Journal of Information and Communication Technology</em>, 26(23). doi:10.1504/IJICT.2025.10071872.</li><li>Wei, J. et al. (2022) 'Chain-of-thought prompting elicits reasoning in large language models', <em>Advances in Neural Information Processing Systems</em>, 35.</li><li>Yu, Y. và Sun, R. (2026) 'Trends and topics in arts education and artificial intelligence: a systematic review using a human-in-the-loop model', <em>International Journal of Arts and Technology</em>, 16.</li></ul>
+</section>
+
+<nav class="pager"><a class="btn ghost" href="bai1.html">← Bài trước</a><a class="btn ghost" href="projects.html">Danh mục Dự án</a><a class="btn" href="bai3.html">Bài tiếp theo →</a></nav>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Nguyễn Hưng Nam – Mã sinh viên: 2552210033 – Lớp: K20A SPAN – Học phần: Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo</p>
+    <p class="small">Trường Đại học Sư phạm Nghệ thuật Trung ương – Khoa Giáo dục Đại cương</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
